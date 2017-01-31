@@ -1,8 +1,3 @@
-<?php  
-include('config.php');
-include('bd/conexion.php');
-
- ?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -13,26 +8,18 @@ include('bd/conexion.php');
     <?php include('enlaces/sweetalert.php'); ?>
   </head>
   <body>
-  <?php include("modal/modal_agregar.php");?>
-  <?php include("modal/modal_modificar.php");?>
-  <?php include("modal/modal_eliminar.php");?>
     <div class="container-fluid">
     <br>
-     <div class="row">
-     <div class="col-md-12">
-    <div class="pull-right">
-     <div class="form-group">
-     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dataRegister"><i class='glyphicon glyphicon-user'></i> Agregar Usuario</button>
-     </div>
-    </div>
-     </div>
-     </div>
+  
 		
 	  <div class="row">
 		<div class="col-xs-12">
-		<div class="panel panel-default">
+		<div class="panel panel-primary">
 			<div class="panel-heading">
-		    Lista de Usuarios
+		    Articulos Codrise
+		    <div class="pull-right">
+		    <a href="../uploads/codrise.xlsx" class="btn btn-xs btn-success">Descargar ODBC</a>
+		    </div>
 			</div>
 			<div class="panel-body">
 

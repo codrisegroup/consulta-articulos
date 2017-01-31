@@ -1,40 +1,40 @@
 <?php 
-include('../config.php');
 include('../bd/conexion.php');
-$db     = new Conexion();
-$query  = "SELECT * FROM usuarios";
-$result = $db->query($query);
+$link   = Conectarse();
+$query  = "
+SELECT  ACODIGO,ACODIGO2,ADESCRI,AUNIDAD,APESO,AFAMILIA,ACOMENTA,STSKDIS FROM MAEART AS M 
+LEFT JOIN STKART AS S ON M.ACODIGO=S.STCODIGO AND STALMA='01' WHERE M.AESTADO='V'";
+$result = mssql_query($query);
  ?>
 
  <div class="table-responsive">
  	<table id="consulta" class="table table-bordered table-condensed">
  		<thead>
- 			<tr>
+ 			<tr class="info">
  				<th>Código</th>
- 				<th>Nombre</th>
- 				<th>Apellidos</th>
- 				<th>Usuario</th>
- 				<th>Contraseña</th>
- 				<th>Tipo</th>
- 				<th>Acciones</th>
+ 				<th>Código Fabricante</th>
+ 				<th>Descripción</th>
+ 				<th>Unidad</th>
+ 				<th>Peso</th>
+ 				<th>Familia</th>
+ 				<th>Stock</th>
+ 				<th>Ficha</th>
  			</tr>
  		</thead>
  		<tbody>
  		<?php 
-        while ($row = mysqli_fetch_array($result))
+        while ($row = mssql_fetch_array($result))
          {
         ?>
 		<tr>
-		<td><?php echo $row['idusuarios']; ?></td>
-		<td><?php echo $row['nombres']; ?></td>
-		<td><?php echo $row['apellidos']; ?></td>
-		<td><?php echo $row['user']; ?></td>
-		<td><?php echo substr(md5($row['pass']),0,10); ?></td>
-		<td><?php echo $row['tipo']; ?></td>
-		<td>
-		<button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#dataUpdate" data-id="<?php echo $row['idusuarios']?>" data-nombres="<?php echo $row['nombres']?>" data-apellidos="<?php echo $row['apellidos']?>" data-usuario="<?php echo $row['user']?>" data-contrasena="<?php echo $row['pass']?>" data-tipo="<?php echo $row['tipo']?>"><i class='glyphicon glyphicon-edit'></i> Modificar</button>
-		<button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['idusuarios']?>"  ><i class='glyphicon glyphicon-trash'></i> Eliminar</button>
-		</td>
+		<td><?php echo utf8_encode($row['ACODIGO']); ?></td>
+		<td><?php echo utf8_encode($row['ACODIGO2']); ?></td>
+		<td><?php echo utf8_encode($row['ADESCRI']); ?></td>
+		<td><?php echo utf8_encode($row['AUNIDAD']); ?></td>
+		<td><?php echo utf8_encode($row['APESO']); ?></td>
+		<td><?php echo $row['APESO']; ?></td>
+		<td><?php echo $row['STSKDIS']; ?></td>
+		<td><?php echo utf8_encode($row['ACOMENTA']); ?></td>
 		</tr>
         <?php
          }

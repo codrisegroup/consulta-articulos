@@ -1,19 +1,28 @@
-<?php 
+<?php
 
-class Conexion extends mysqli
+  
+function Conectarse()
+
 {
-	
-	public function __construct()
-	{
-		parent::__construct(SERVERBD,USERBD,PASSBD,BD);
-		$this->query("SET NAMES 'utf8'");
-		$this->connect_errno ? die('Error con la conexion') : $x = 'Conectado';
-		//echo $x;
-		unset($x);
-	}
-    
 
- }
+if(!($link=mssql_connect("192.168.1.4","APLICACIONES","APLICACIONES")))
+{
+
+echo"Error de Conexion Servidor";
+
+	exit();
+}
+  if (!mssql_select_db("[010BDCOMUN]",$link)) 
+  {
+
+  	echo"Error seleccionando la base de datos";
+
+  	exit();
+}
+
+return $link;
+
+}
 
 
- ?>
+  ?>
